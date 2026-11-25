@@ -13,6 +13,11 @@ LINE = (
     "cosplaying productivity."
 )
 
+# The gate allows 1-200 characters: fail loudly here instead of writing an
+# entry the scorer would refuse.
+if not 1 <= len(LINE) <= 200:
+    raise SystemExit(f"entry line is {len(LINE)} characters, outside 1-200")
+
 
 def main() -> None:
     os.makedirs("/output", exist_ok=True)
